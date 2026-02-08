@@ -52,3 +52,63 @@
 - アダプターは **ポートと外部技術に依存**
 
 この依存関係が崩れると、変更に弱い構造になります。
+
+## クラス図（概念対応）
+
+```mermaid
+classDiagram
+    class Job {
+      +JobId id
+      +JobStatus status
+      +JobType job_type
+      +NotificationChannel notification_channel
+      +start()
+      +complete()
+      +fail()
+      +cancel()
+      +collect_events()
+    }
+
+    class JobRepository {
+      <<interface>>
+      +save(Job)
+      +find_by_id(JobId)
+      +find_all()
+    }
+
+    class EventPublisher {
+      <<interface>>
+      +publish(DomainEvent)
+    }
+
+    class NotificationSender {
+      <<interface>>
+      +send(Job)
+    }
+
+    class CreateJobUseCase {
+      +execute(duration_seconds, notification_channel)
+    }
+
+    class PostgresJobRepository {
+      +save(Job)
+      +find_by_id(JobId)
+      +find_all()
+    }
+
+    class RedisEventPublisher {
+      +publish(DomainEvent)
+    }
+
+    class NotificationSenderFactory {
+      +create(NotificationChannel)
+    }
+
+    JobRepository <|.. PostgresJobRepository
+    EventPublisher <|.. RedisEventPublisher
+    NotificationSender <|.. NotificationSenderFactory
+
+    CreateJobUseCase --> JobRepository
+    CreateJobUseCase --> EventPublisher
+    CreateJobUseCase --> Job
+```
