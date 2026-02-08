@@ -25,6 +25,7 @@
 7. [メッセージングとワーカー処理](./06_messaging_worker.md)
 8. [データモデルと ER 図](./07_data_model.md)
 9. [読みどころ（コードパスの案内）](./08_reading_tips.md)
+10. [asyncio による並列実行（技術書）](./09_asyncio_concurrency.md)
 
 ## 使い方
 
