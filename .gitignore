@@ -1,0 +1,38 @@
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.venv/
+.uv/
+.pytest_cache/
+
+# Node/Bun
+node_modules/
+.bun/
+.bun-cache/
+
+# Build artifacts
+dist/
+build/
+
+# Coverage / reports
+coverage/
+*.cover
+*.log
+
+# Env files
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# OpenSpec
+openspec/.cache/
